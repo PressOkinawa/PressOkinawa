@@ -1,0 +1,116 @@
+:root{
+  --brand:#0b3b6f;          /* Navy */
+  --accent:#0ea5e9;         /* Sky */
+  --bg:#f7fafc;
+  --ink:#0f172a;            /* Slate-900 */
+  --muted:#6b7280;          /* Gray-500 */
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.7;
+}
+img{max-width:100%;display:block}
+.container{width:min(1100px,92vw);margin-inline:auto}
+
+/* Header */
+.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e7eb;z-index:50}
+.site-header .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .logo{width:28px;height:28px}
+.brand span{font-weight:700;letter-spacing:.2px;color:var(--brand)}
+.nav{display:flex;gap:14px;align-items:center}
+.nav a{color:#334155;text-decoration:none;padding:8px 10px;border-radius:10px}
+.nav a:hover{background:#f1f5f9}
+.menu-btn{display:none}
+@media (max-width: 760px){
+  .menu-btn{display:inline-flex;border:1px solid #e5e7eb;border-radius:12px;padding:8px;background:#fff}
+  .nav{position:fixed;inset:64px 12px auto 12px;background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.06);padding:12px;display:none;flex-direction:column}
+  .nav.open{display:flex}
+}
+
+/* ========= Hero ========= */
+/* ヒーロー内の既存グラデーションを必ず無効化（薄く見える原因） */
+.hero{ 
+  padding: 0 !important;
+  background: none !important;   /* ← ここでグラデ消す【globals.css の元定義】 */
+}
+
+/* 背景画像セクション */
+.hero-bg {
+  background-image: url("/images/puresug.gif");
+  background-repeat: no-repeat;
+  background-position: center top; /* 重要部分が上にある想定なら top を優先 */
+  background-size: cover;          /* 余白ゼロ（多少のトリミングは発生） */
+  width: 100%;
+  height: 80vh;                    /* 画面高に合わせる */
+  min-height: 700px;               /* 下の文字が切れないよう下限確保（調整OK） */
+  display: grid;
+  place-items: center;             /* 中央配置 */
+  text-align: center;
+}
+
+/* 画面が縦長すぎる端末では “切れ” を抑えるため contain に切替（左右余白は許容） */
+@media (max-aspect-ratio: 3/4){
+  .hero-bg{
+    background-size: contain;
+    background-position: center top;
+    background-color: #fff;        /* 余白の背景色（必要なら変更） */
+  }
+}
+
+.hero-bg .hero{
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+  padding: 40px 20px;              /* テキストの上下余白 */
+  color: #0f172a;                  /* くっきり見せる（白文字にしたいなら #fff へ） */
+}
+.hero-bg h1{
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+.hero-bg p{
+  margin: 0 0 20px;
+  font-size: 18px;
+}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:600}
+.btn.primary{background:var(--brand);color:#fff}
+.btn.outline{border:1px solid #cbd5e1;color:#0f172a;background:#fff}
+.btn:hover{filter:brightness(1.02)}
+
+/* Sections */
+.section{padding:48px 0}
+.section h2{font-size:clamp(22px,4vw,32px);margin:0 0 8px}
+.section p.lead{color:var(--muted);margin:0 0 24px}
+
+/* Services grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width: 960px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width: 620px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.card h3{margin:0 0 8px}
+.card p{color:var(--muted);margin:0}
+
+/* Feature band */
+.band{border:1px solid #e5e7eb;background:#fff;border-radius:16px;padding:22px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+@media (max-width: 820px){.band{grid-template-columns:1fr}}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badges span{background:#eef2ff;color:#3730a3;border-radius:999px;padding:6px 10px;font-weight:600;font-size:12px}
+
+/* Contact form */
+.form{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.input,textarea{border:1px solid #cbd5e1;border-radius:12px;padding:10px 12px;font:inherit}
+textarea{min-height:140px;resize:vertical}
+
+/* Footer */
+footer{border-top:1px solid #e5e7eb;background:#fff;margin-top:42px}
+.footer-inner{padding:20px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#475569}
+.footer-inner a{color:#475569;text-decoration:none}

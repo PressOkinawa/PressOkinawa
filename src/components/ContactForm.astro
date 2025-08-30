@@ -1,0 +1,48 @@
+<form class="form" id="contact-form">
+  <!--（ボット対策） -->
+  <input type="text" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-10000px;opacity:0" />
+  <div class="field">
+    <label for="name">お名前</label>
+    <input class="input" id="name" name="name" required />
+  </div>
+  <div class="field">
+    <label for="email">メール</label>
+    <input class="input" id="email" name="email" type="email" required />
+  </div>
+  <div class="field">
+    <label for="message">ご用件</label>
+    <textarea id="message" name="message" placeholder="サイズ／部数／納期など" required></textarea>
+  </div>
+  <button class="btn primary" type="submit">送信する</button>
+  <p id="form-status" aria-live="polite" style="margin-top:8px"></p>
+</form>
+
+<script type="module">
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '送信中...';
+
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (res.ok && json.ok) {
+        statusEl.textContent = '送信しました。折り返しご連絡します。';
+        form.reset();
+      } else {
+        statusEl.textContent = '送信に失敗しました。しばらくして再度お試しください。';
+      }
+    } catch {
+      statusEl.textContent = '送信に失敗しました。ネットワークをご確認ください。';
+    }
+  });
+</script>

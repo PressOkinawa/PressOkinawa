@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.astro";
+---
+<BaseLayout title="お問い合わせ">
+  <Fragment slot="title">お問い合わせ – </Fragment>
+  <section class="section">
+    <div class="container" style="display:grid;gap:18px;grid-template-columns:1fr 1fr">
+      <div>
+        <h1>お問い合わせ</h1>
+        <p class="lead">見積・相談は下記フォームから。データが未完成でもOKです。</p>
+        <ContactForm />
+      </div>
+      <div class="card">
+        <h3>連絡先</h3>
+        <p>
+          〒郵便番号 1-2-3<br/>
+          TEL: 098-000-0000<br/>
+          Mail: pressokinawa@gmail.com<br/>
+          受付: 平日 9:00–18:00
+        </p>
+        <hr style="border:none;border-top:1px solid #e5e7eb;margin:12px 0"/>
+        <h3>よくある質問</h3>
+        <ul>
+          <li>質問テキスト</li>
+          <li>質問テキスト</li>
+          <li>質問テキスト</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

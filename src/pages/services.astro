@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+---
+<BaseLayout>
+  <Fragment slot="title">サービス – </Fragment>
+  <section class="section">
+    <div class="container">
+      <h1>サービス</h1>
+      <p class="lead">下記以外の特殊加工・仕様もご相談ください。</p>
+      <div class="grid">
+        <ServiceCard title="サービス1" text="テキスト" />
+        <ServiceCard title="サービス2" text="テキスト" />
+        <ServiceCard title="サービス3" text="テキスト" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>テキスト</h2>
+      <ul>
+        <li>テキスト</li>
+        <li>テキスト</li>
+        <li>テキスト</li>
+        <li>テキスト</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

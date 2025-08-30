@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const products = [
+  {
+    title: "首里城の朝焼け（写真）",
+    price: "¥1,200",
+    preview: "/images/preview/shuri.webp",         
+    link: "https://buy.stripe.com/test_xxxxxxxxx"   
+  },
+  {
+    title: "沖縄の海（動画15秒サンプル）",
+    price: "¥2,000",
+    preview: "/images/preview/ocean.mp4",          
+    link: "https://buy.stripe.com/test_yyyyyyyyy"
+  }
+];
+---
+<BaseLayout title="ギャラリー">
+  <Fragment slot="title">ギャラリー – </Fragment>
+
+  <section class="section">
+    <div class="container">
+      <h1>写真・動画販売</h1>
+      <p class="lead">プレビューをご覧いただき、気に入った作品を購入いただけます。</p>
+
+      <div class="grid gallery-grid">
+        {products.map((p) => (
+          <div class="card item">
+            {p.preview.endsWith(".mp4") ? (
+              <video src={p.preview} controls muted playsinline></video>
+            ) : (
+              <img src={p.preview} alt={p.title} loading="lazy" />
+            )}
+            <h3 style="margin-top:10px">{p.title}</h3>
+            <p class="price">{p.price}</p>
+            <a href={p.link} target="_blank" class="btn primary" rel="noopener noreferrer">購入する</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .item img,
+  .item video { width: 100%; border-radius: 8px; }
+  .price { margin: 0 0 10px; color: #334155; }
+</style>

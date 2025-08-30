@@ -1,0 +1,22 @@
+---
+const nav = [
+  { href: '/', label: 'ホーム' },
+  { href: '/services', label: 'サービス' },
+  { href: '/gallery', label: 'ギャラリー' },
+  { href: '/about', label: '会社概要' },
+  { href: '/contact', label: 'お問い合わせ' }
+];
+---
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="/">
+      <span>Press Okinawa</span>
+    </a>
+    <button class="menu-btn" aria-label="メニュー" onclick="document.querySelector('.nav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16M4 18h16" stroke="#334155" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="nav" aria-label="メイン">
+      {nav.map(i => (<a href={i.href}>{i.label}</a>))}
+    </nav>
+  </div>
+</header>

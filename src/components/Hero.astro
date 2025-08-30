@@ -1,0 +1,14 @@
+---
+interface Props{ title:string; subtitle?:string; ctaHref?:string; ctaLabel?:string }
+const { title, subtitle = '', ctaHref = '/contact', ctaLabel = '見積を依頼' } = Astro.props as Props;
+---
+<section class="hero">
+  <div class="container">
+    <h1>{title}</h1>
+    {subtitle && <p>{subtitle}</p>}
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn primary" href={ctaHref}>{ctaLabel}</a>
+      <a class="btn outline" href="/services">サービスを見る</a>
+    </div>
+  </div>
+</section>

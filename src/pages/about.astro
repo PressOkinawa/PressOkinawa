@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout>
+  <Fragment slot="title">会社概要 – </Fragment>
+  <section class="section">
+    <div class="container">
+      <h1>会社概要</h1>
+      <p class="lead">テキスト</p>
+      <div class="band" style="grid-template-columns:1fr 1fr">
+        <div>
+          <h3>コメント</h3>
+          <p>Press Okinawa は~ 何かテキスト</p>
+          <ul>
+            <li>テキスト</li>
+            <li>所在地：沖縄県~</li>
+            <li>営業時間：平日 ?:00–?:00（急ぎは要相談）</li>
+          </ul>
+        </div>
+        <div>
+          <img src="/images/image1.png"  style="border:1px solid #e5e7eb;border-radius:16px"/>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
