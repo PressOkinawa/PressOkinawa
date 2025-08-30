@@ -1,8 +1,8 @@
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';   // ← 新しい推奨のimport
 
 export default defineConfig({
-  output: 'hybrid',   // SSR + 静的の両方OK
-  adapter: vercel(),
+  output: 'server',                      // ← 'hybrid' ではなく 'server'
+  adapter: vercel(),                     // そのままでOK
 });
